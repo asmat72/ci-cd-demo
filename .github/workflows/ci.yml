@@ -6,10 +6,10 @@ on:
   pull_request: 
     branches: [ "main" ] 
 
-jobs:  
-  build: 
+jobs:
+  build:
     runs-on: ubuntu-latest 
-    steps: 
+    steps:
       # Step 1: Checkout code 
       - name: Checkout code 
         uses: actions/checkout@v3 
@@ -38,7 +38,7 @@ jobs:
 
       # Step 7: Use secret as environment variable 
       - name: Use secret as env var 
-        env: 
+        env:
           MY_SECRET: ${{ secrets.MY_SECRET }} 
-        run: | 
+        run: |
           echo "Secret is $MY_SECRET"
