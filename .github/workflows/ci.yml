@@ -1,44 +1,44 @@
-name: CI Pipeline 
+name: CI Pipeline
 
-on: 
-  push: 
-    branches: [ "main" ] 
-  pull_request: 
-    branches: [ "main" ] 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout code 
-      - name: Checkout code 
-        uses: actions/checkout@v3 
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      # Step 2: Validate project (example for HTML)
+      - name: Validate HTML
+        run: echo "HTML file exists: $(ls index.html)"
 
-      # Step 2: Validate project (example for HTML) 
-      - name: Validate HTML 
-        run: echo "HTML file exists: $(ls index.html)" 
-      
-      # Step 3: Set up Node.js 
-      - name: Set up Node.js 
-        uses: actions/setup-node@v3 
-        with: 
-          node-version: '18' 
+      # Step 3: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      # Step 4: Install dependencies 
-      - name: Install dependencies 
-        run: npm install 
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-      # Step 5: Run tests 
-      - name: Run tests 
-        run: npm test 
+      # Step 5: Run tests
+      - name: Run tests
+        run: npm test
 
-      # Step 6: Print secret directly 
-      - name: Print secret 
-        run: echo "Secret is ${{ secrets.MY_SECRET }}" 
+      # Step 6: Print secret directly
+      - name: Print secret
+        run: echo "Secret is ${{ secrets.MY_SECRET }}"
 
-      # Step 7: Use secret as environment variable 
-      - name: Use secret as env var 
+      # Step 7: Use secret as environment variable
+      - name: Use secret as env var
         env:
-          MY_SECRET: ${{ secrets.MY_SECRET }} 
+          MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
           echo "Secret is $MY_SECRET"
