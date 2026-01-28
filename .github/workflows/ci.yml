@@ -13,7 +13,7 @@ jobs:
       # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
       # Step 2: Validate project (example for HTML)
       - name: Validate HTML
         run: echo "HTML file exists: $(ls index.html)"
@@ -32,13 +32,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      # Step 6: Print secret directly
+      # Step 6: Print secret directly  
       - name: Print secret
         run: echo "Secret is ${{ secrets.MY_SECRET }}"
-
-      # Step 7: Use secret as environment variable
-      - name: Use secret as env var
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: |
-          echo "Secret is $MY_SECRET"
